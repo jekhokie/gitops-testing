@@ -1,0 +1,26 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: busybox-http
+  namespace: test-busybox
+  annotations:
+    fluxcd.io/automated: "false"
+spec:
+  releaseName: busybox-http
+  chart:
+    git: ssh://git@github.com/jekhokie/gitops-testing
+    ref: master
+    path: charts/busybox-http
+  values:
+    image:
+      repository: busybox
+      tag: latest
+    persistence:
+      enabled: false
+    resources:
+      requests:
+        memory: 32Mi
+        cpu: 10m
+    service:
+      type: ClusterIP
