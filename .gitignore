@@ -1,0 +1,6 @@
+# ignore vim temp files
+*.swp
+*.swo
+
+# ignore any Mac-related files
+*DS_Store
